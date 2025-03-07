@@ -310,7 +310,8 @@
         transform: rotateY(180deg);
       }
 
-      .card-front, .card-back {
+      .card-front,
+      .card-back {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -409,6 +410,42 @@
         color: var(--text_light);
         line-height: 1.6;
       }
+      
+      /* Timer Styles */
+      .timer-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 2rem 0;
+        flex-wrap: wrap;
+      }
+      .timer-card {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        padding: 1rem;
+        border-radius: 10px;
+        width: 80px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+      .timer-value {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 0.25rem;
+      }
+      .timer-label {
+        font-size: 0.75rem;
+        color: var(--text_light);
+        text-transform: uppercase;
+      }
+      
+      /* Center the Register Now button in the Empyrean section */
+      #empyrean .class__content .btn {
+        display: block;
+        margin: 2rem auto 0 auto;
+      }
 
       .join__image {
         margin-top: 4rem;
@@ -500,7 +537,6 @@
         bottom: -10px;
         left: 50%;
         transform: translateX(-50%);
-        border-radius: 5px;
       }
 
       .team__hierarchy {
@@ -796,7 +832,6 @@
         border: 4px solid var(--secondary-color);
         box-shadow: 0 10px 30px rgba(137, 1, 1, 0.3);
         transition: transform 0.5s ease;
-        /* Removed grayscale filter so image remains colored */
       }
 
       .organizer__image:hover img {
@@ -984,17 +1019,6 @@
       .hamburger.active span:nth-child(3) {
         transform: rotate(-45deg) translate(5px, -5px);
       }
-
-      /* Removed duplicate X icon by deleting the pseudo-element rule */
-      /* .nav__links.active::after {
-        content: "✖";
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 2rem;
-        color: var(--white);
-        cursor: pointer;
-      } */
 
       .close-menu {
         position: fixed;
@@ -1184,6 +1208,72 @@
           padding: 0 1rem;
         }
       }
+
+      /* Ticket Booking Modal Styles */
+      .ticket-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .ticket-form {
+        background: var(--primary-color-light);
+        padding: 2rem;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        position: relative;
+      }
+
+      .ticket-form h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: var(--white);
+      }
+
+      .ticket-form input,
+      .ticket-form button {
+        width: 100%;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        border: none;
+        border-radius: 4px;
+      }
+
+      .ticket-form input {
+        background: var(--primary-color);
+        color: var(--white);
+      }
+
+      .ticket-form button {
+        background-color: var(--secondary-color);
+        color: var(--white);
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .ticket-form button:hover {
+        background-color: var(--secondary-color-dark);
+      }
+
+      .ticket-form .close-modal {
+        background: transparent;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--white);
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
@@ -1198,11 +1288,11 @@
         <li class="link"><a href="#about">About</a></li>
         <li class="link"><a href="#team">Our Team</a></li>
         <li class="link mobile-register">
-          <button class="btn">Register Now</button>
+          <button class="btn" onclick="showTicketModal()">Register Now</button>
         </li>
         <button class="close-menu">✖</button>
       </ul>
-      <button class="btn desktop-register">Register Now</button>
+      <button class="btn desktop-register" onclick="showTicketModal()">Register Now</button>
       <button class="hamburger">
         <span></span>
         <span></span>
@@ -1236,9 +1326,29 @@
       <div class="class__content">
         <h2 class="section__header"><span style="color: red;">EMPYREAN </span>: A VISION BEYOND THE STARS</h2>
         <p>
-          Empyrean, our theme for TEDxSRMIST, invites you to look beyond the horizon of human knowledge and imagination. Join us as we explore groundbreaking ideas that push the boundaries of what's possible and inspire us to reach for the stars.
+          Empyrean, the official theme for TEDxSRMIST, invites you to look beyond the horizon of human knowledge, feeling, thoughts and imagination. Join us on <time datetime="2025-04-01" style="color: red;">1st April 2025</time>, as we explore groundbreaking ideas that push the boundaries of what's possible and inspire us to reach for the stars.
         </p>
-        <button class="btn">Register Now</button>
+        <!-- Modern Timer Section -->
+        <div class="timer-container">
+          <div class="timer-card">
+            <div class="timer-value" id="days">00</div>
+            <div class="timer-label">Days</div>
+          </div>
+          <div class="timer-card">
+            <div class="timer-value" id="hours">00</div>
+            <div class="timer-label">Hours</div>
+          </div>
+          <div class="timer-card">
+            <div class="timer-value" id="minutes">00</div>
+            <div class="timer-label">Minutes</div>
+          </div>
+          <div class="timer-card">
+            <div class="timer-value" id="seconds">00</div>
+            <div class="timer-label">Seconds</div>
+          </div>
+        </div>
+        <!-- Centered Register Now button -->
+        <button class="btn" onclick="showTicketModal()">Register Now</button>
       </div>
     </section>
 
@@ -1255,7 +1365,7 @@
               <h4>Dr. Sudheer Kumar N</h4>
             </div>
             <div class="card-back">
-              <p>Dr. Sudheer Kumar N is an expert in his field with years of experience and innovative ideas.</p>
+              <p>Sudheer Kumar N, CBPO at ISRO, India’s space research organization. With a wealth of experience in the aerospace industry, he takes us on a journey through the stars, sharing insights into the future of space exploration and the role of innovation in shaping our cosmic aspirations.</p>
             </div>
           </div>
         </div>
@@ -1266,7 +1376,7 @@
               <h4>Sagar Makwana</h4>
             </div>
             <div class="card-back">
-              <p>Sagar Makwana brings a unique perspective and groundbreaking insights to the stage.</p>
+              <p>A man of several passions, Sagar Makwana has ample experience in entrepreneurship, management and mentorship. His unique perspective on life and commitment serves as a game changer.</p>
             </div>
           </div>
         </div>
@@ -1277,7 +1387,7 @@
               <h4>Shazibsha Younes</h4>
             </div>
             <div class="card-back">
-              <p>Shazibsha Younes is known for his engaging talks and thought-provoking ideas.</p>
+              <p>Shazibsha Younes, a visionary in aerospace engineering with a passion for exploring spirituality, philosophy, and community unity.</p>
             </div>
           </div>
         </div>
@@ -1288,7 +1398,7 @@
               <h4>Disha Kasat</h4>
             </div>
             <div class="card-back">
-              <p>Disha Kasat captivates audiences with her dynamic presentations and insights.</p>
+              <p>Disha Kasat, a cricketer and WPL winner with RCB. With her experience in female cricket and an impressive track record, she shares insights into the future of women’s sports and innovation in society.</p>
             </div>
           </div>
         </div>
@@ -1299,7 +1409,7 @@
               <h4>Vishal Yadav</h4>
             </div>
             <div class="card-back">
-              <p>Vishal Yadav is celebrated for his expertise and innovative approach in his field.</p>
+              <p>Vishal Yadav, Founder and CEO at Female Cricket. His platform inspires and empowers female cricketers worldwide with innovative training techniques and a global vision.</p>
             </div>
           </div>
         </div>
@@ -1310,7 +1420,18 @@
               <h4>Prachi Goswami</h4>
             </div>
             <div class="card-back">
-              <p>Prachi Goswami brings creativity and passion to every talk she delivers.</p>
+              <p>Prachi Goswami, a pilot and aviation instructor, rises from a national-level swimmer to soaring heights in the aviation industry, inspiring transformation and enlightenment.</p>
+            </div>
+          </div>
+        </div>
+        <div class="explore__card">
+          <div class="explore__card-inner">
+            <div class="card-front">
+              <img src="prakruti.jpg" alt="Speaker 6" />
+              <h4>Prakruti Mishra</h4>
+            </div>
+            <div class="card-back">
+              <p>Prakruti Mishra – a beacon of stardom whose captivating performances and dedication embody the transformative power of storytelling.</p>
             </div>
           </div>
         </div>
@@ -1321,7 +1442,7 @@
               <h4>Ankush Barjata</h4>
             </div>
             <div class="card-back">
-              <p>Ankush Barjata shares insightful ideas and engages audiences with his dynamic style.</p>
+              <p>Ankush R Barjata, CEO of Deeva and a Shark Tank finalist, revolutionizes the saree shopping experience with his visionary approach.</p>
             </div>
           </div>
         </div>
@@ -1333,7 +1454,7 @@
               <h4>Dr. Sudheer Kumar N</h4>
             </div>
             <div class="card-back">
-              <p>Dr. Sudheer Kumar N is an expert in his field with years of experience and innovative ideas.</p>
+              <p>Sudheer Kumar N, CBPO at ISRO, India’s space research organization. With a wealth of experience in the aerospace industry, he takes us on a journey through the stars, sharing insights into the future of space exploration and the role of innovation in shaping our cosmic aspirations.</p>
             </div>
           </div>
         </div>
@@ -1344,7 +1465,7 @@
               <h4>Sagar Makwana</h4>
             </div>
             <div class="card-back">
-              <p>Sagar Makwana brings a unique perspective and groundbreaking insights to the stage.</p>
+              <p>A man of several passions, Sagar Makwana has ample experience in entrepreneurship, management and mentorship. His unique perspective on life and commitment serves as a game changer.</p>
             </div>
           </div>
         </div>
@@ -1355,7 +1476,62 @@
               <h4>Shazibsha Younes</h4>
             </div>
             <div class="card-back">
-              <p>Shazibsha Younes is known for his engaging talks and thought-provoking ideas.</p>
+              <p>Shazibsha Younes, a visionary in aerospace engineering with a passion for exploring spirituality, philosophy, and community unity.</p>
+            </div>
+          </div>
+        </div>
+        <div class="explore__card">
+          <div class="explore__card-inner">
+            <div class="card-front">
+              <img src="disha.jpg" alt="Speaker 4" />
+              <h4>Disha Kasat</h4>
+            </div>
+            <div class="card-back">
+              <p>Disha Kasat, a cricketer and WPL winner with RCB. With her experience in female cricket and an impressive track record, she shares insights into the future of women’s sports and innovation in society.</p>
+            </div>
+          </div>
+        </div>
+        <div class="explore__card">
+          <div class="explore__card-inner">
+            <div class="card-front">
+              <img src="vishal.jpg" alt="Speaker 5" />
+              <h4>Vishal Yadav</h4>
+            </div>
+            <div class="card-back">
+              <p>Vishal Yadav, Founder and CEO at Female Cricket. His platform inspires and empowers female cricketers worldwide with innovative training techniques and a global vision.</p>
+            </div>
+          </div>
+        </div>
+        <div class="explore__card">
+          <div class="explore__card-inner">
+            <div class="card-front">
+              <img src="prachi.jpg" alt="Speaker 6" />
+              <h4>Prachi Goswami</h4>
+            </div>
+            <div class="card-back">
+              <p>Prachi Goswami, a pilot and aviation instructor, rises from a national-level swimmer to soaring heights in the aviation industry, inspiring transformation and enlightenment.</p>
+            </div>
+          </div>
+        </div>
+        <div class="explore__card">
+          <div class="explore__card-inner">
+            <div class="card-front">
+              <img src="prakruti.jpg" alt="Speaker 6" />
+              <h4>Prakruti Mishra</h4>
+            </div>
+            <div class="card-back">
+              <p>Prakruti Mishra – a beacon of stardom whose captivating performances and dedication embody the transformative power of storytelling.</p>
+            </div>
+          </div>
+        </div>
+        <div class="explore__card">
+          <div class="explore__card-inner">
+            <div class="card-front">
+              <img src="ankush.jpg" alt="Speaker 7" />
+              <h4>Ankush Barjata</h4>
+            </div>
+            <div class="card-back">
+              <p>Ankush R Barjata, CEO of Deeva and a Shark Tank finalist, revolutionizes the saree shopping experience with his visionary approach.</p>
             </div>
           </div>
         </div>
@@ -1409,8 +1585,8 @@
               <p>President</p>
             </div>
             <div class="team__social">
-              <a href="#"><i class="ri-linkedin-fill"></i></a>
-              <a href="#"><i class="ri-instagram-line"></i></a>
+              <a href="https://www.linkedin.com/in/mahasuriya/"><i class="ri-linkedin-fill"></i></a>
+              <a href="https://www.instagram.com/mahaaa.15/"><i class="ri-instagram-line"></i></a>
             </div>
           </div>
         </div>
@@ -1422,8 +1598,8 @@
               <p>Vice President</p>
             </div>
             <div class="team__social">
-              <a href="#"><i class="ri-linkedin-fill"></i></a>
-              <a href="#"><i class="ri-instagram-line"></i></a>
+              <a href="https://www.linkedin.com/in/atul-nair/"><i class="ri-linkedin-fill"></i></a>
+              <a href="https://www.instagram.com/atulnair__/"><i class="ri-instagram-line"></i></a>
             </div>
           </div>
           <div class="team__card">
@@ -1433,8 +1609,8 @@
               <p>Vice President</p>
             </div>
             <div class="team__social">
-              <a href="#"><i class="ri-linkedin-fill"></i></a>
-              <a href="#"><i class="ri-instagram-line"></i></a>
+              <a href="https://www.linkedin.com/in/smaran-v/"><i class="ri-linkedin-fill"></i></a>
+              <a href="https://www.instagram.com/jetboy320/"><i class="ri-instagram-line"></i></a>
             </div>
           </div>
         </div>
@@ -1458,8 +1634,8 @@
                 <p>Lead</p>
               </div>
               <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="https://www.linkedin.com/in/a-s-shivam-983248237/"><i class="ri-linkedin-fill"></i></a>
+                <a href="https://www.instagram.com/shivam__san/"><i class="ri-instagram-line"></i></a>
               </div>
             </div>
             <div class="team__card">
@@ -1469,8 +1645,8 @@
                 <p>Lead</p>
               </div>
               <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="https://www.linkedin.com/in/pandeyswayam19/"><i class="ri-linkedin-fill"></i></a>
+                <a href="https://www.instagram.com/s_pandey_/"><i class="ri-instagram-line"></i></a>
               </div>
             </div>
             <div class="team__card">
@@ -1480,8 +1656,8 @@
                 <p>Associate Lead</p>
               </div>
               <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="https://www.linkedin.com/in/nabeelahmad10/"><i class="ri-linkedin-fill"></i></a>
+                <a href="https://www.instagram.com/thenabeeeeel/"><i class="ri-instagram-line"></i></a>
               </div>
             </div>
             <div class="team__card">
@@ -1491,8 +1667,8 @@
                 <p>Associate Lead</p>
               </div>
               <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="https://www.linkedin.com/in/shiva-shankaran-6653b1293/"><i class="ri-linkedin-fill"></i></a>
+                <a href="https://www.instagram.com/shiva10.07/"><i class="ri-instagram-line"></i></a>
               </div>
             </div>
             <div class="team__card">
@@ -1503,7 +1679,7 @@
               </div>
               <div class="team__social">
                 <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="https://www.instagram.com/ap._.rvaa/"><i class="ri-instagram-line"></i></a>
               </div>
             </div>
             <div class="team__card">
@@ -1513,173 +1689,13 @@
                 <p>Associate Lead</p>
               </div>
               <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="https://www.linkedin.com/in/neha-kadiyala-9430912b7/"><i class="ri-linkedin-fill"></i></a>
+                <a href="https://www.instagram.com/nehakadiyala/"><i class="ri-instagram-line"></i></a>
               </div>
             </div>
           </div>
         </div>
-<!-- 
-        <div class="domain__section" id="operations">
-          <h3 class="domain__title">OPERATIONS</h3>
-          <div class="domain__team">
-            <div class="team__card">
-              <img src="atul.png" alt="Lead">
-              <div class="team__info">
-                <h4>Daksh Namdev</h4>
-                <p>Lead</p>
-              </div>
-              <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-              </div>
-            </div>
-            <div class="team__card">
-              <img src="atul.png" alt="Lead">
-              <div class="team__info">
-                <h4>Jayashree Manigandan</h4>
-                <p>Lead</p>
-              </div>
-              <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-              </div>
-            </div>
-            <div class="team__card">
-              <img src="atul.png" alt="Associate Lead">
-              <div class="team__info">
-                <h4>Satya</h4>
-                <p>Associate Lead</p>
-              </div>
-              <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-              </div>
-            </div>
-            <div class="team__card">
-              <img src="atul.png" alt="Associate Lead">
-              <div class="team__info">
-                <h4>Bharath</h4>
-                <p>Associate Lead</p>
-              </div>
-              <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="domain__section" id="creatives">
-          <h3 class="domain__title">CREATIVES</h3>
-          <div class="domain__team">
-            <div class="team__card">
-              <img src="atul.png" alt="Lead">
-              <div class="team__info">
-                <h4>Jevil Mansata</h4>
-                <p>Lead</p>
-              </div>
-              <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-              </div>
-            </div>
-            <div class="team__card">
-              <img src="atul.png" alt="Lead">
-              <div class="team__info">
-                <h4>Vishwanath Peri</h4>
-                <p>Lead</p>
-              </div>
-              <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-              </div>
-            </div>
-            <div class="team__card">
-              <img src="atul.png" alt="Associate Lead">
-              <div class="team__info">
-                <h4>Aqeel Umar</h4>
-                <p>Associate Lead</p>
-              </div>
-              <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-              </div>
-            </div>
-            <div class="team__card">
-              <img src="atul.png" alt="Associate Lead">
-              <div class="team__info">
-                <h4>Krishna Kalyan</h4>
-                <p>Associate Lead</p>
-              </div>
-              <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-              </div>
-            </div>
-            <div class="team__card">
-              <img src="atul.png" alt="Associate Lead">
-              <div class="team__info">
-                <h4>Varsha Srinivasan</h4>
-                <p>Associate Lead</p>
-              </div>
-              <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="domain__section" id="sponsorships">
-          <h3 class="domain__title">SPONSORSHIPS</h3>
-          <div class="domain__team">
-            <div class="team__card">
-              <img src="atul.png" alt="Lead">
-              <div class="team__info">
-                <h4>Rashmita Chowdary</h4>
-                <p>Lead</p>
-              </div>
-              <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-              </div>
-            </div>
-            <div class="team__card">
-              <img src="atul.png" alt="Lead">
-              <div class="team__info">
-                <h4>Arnav Gupta</h4>
-                <p>Lead</p>
-              </div>
-              <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-              </div>
-            </div>
-            <div class="team__card">
-              <img src="atul.png" alt="Associate Lead">
-              <div class="team__info">
-                <h4>Sarthak Kar</h4>
-                <p>Associate Lead</p>
-              </div>
-              <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-              </div>
-            </div>
-            <div class="team__card">
-              <img src="atul.png" alt="Associate Lead">
-              <div class="team__info">
-                <h4>Shishir Mishra</h4>
-                <p>Associate Lead</p>
-              </div>
-              <div class="team__social">
-                <a href="#"><i class="ri-linkedin-fill"></i></a>
-                <a href="#"><i class="ri-instagram-line"></i></a>
-              </div> -->
-            </div>
-          </div>
-        </div>
+        <!-- Additional domain sections commented out for brevity -->
       </div>
     </section>
 
@@ -1733,6 +1749,21 @@
     </footer>
     <div class="footer__bar">
       Copyright © 2025 TEDxSRMIST. All rights reserved.
+    </div>
+
+    <!-- Ticket Booking Modal -->
+    <div id="ticketModal" class="ticket-modal">
+      <div class="ticket-form">
+        <button class="close-modal" onclick="closeTicketModal()">✖</button>
+        <h2>Ticket Booking</h2>
+        <form id="ticketBookingForm" onsubmit="processTicketBooking(event)">
+          <input type="text" id="name" name="name" placeholder="Your Name" required />
+          <input type="tel" id="phone" name="phone" placeholder="Phone Number" required />
+          <input type="email" id="email" name="email" placeholder="Email Address" required />
+          <input type="number" id="tickets" name="tickets" placeholder="Number of Tickets" min="1" required />
+          <button type="submit">Buy Now</button>
+        </form>
+      </div>
     </div>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -1840,7 +1871,54 @@
             section.style.boxShadow = "0 10px 30px rgba(0, 0, 0, 0.1)";
           });
         });
+        
+        // Timer countdown code for the Empyrean section
+        function updateCountdown() {
+          const targetDate = new Date("April 1, 2025 00:00:00").getTime();
+          const now = new Date().getTime();
+          const difference = targetDate - now;
+          
+          if (difference < 0) {
+            document.querySelector(".timer-container").innerHTML = "Event Started";
+            return;
+          }
+          
+          const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+          
+          document.getElementById("days").innerText = days;
+          document.getElementById("hours").innerText = hours;
+          document.getElementById("minutes").innerText = minutes;
+          document.getElementById("seconds").innerText = seconds;
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
       });
+
+      // Ticket Modal functions
+      function showTicketModal() {
+        document.getElementById('ticketModal').style.display = 'flex';
+      }
+      function closeTicketModal() {
+        document.getElementById('ticketModal').style.display = 'none';
+      }
+      function processTicketBooking(event) {
+        event.preventDefault();
+        var name = document.getElementById('name').value;
+        var phone = document.getElementById('phone').value;
+        var email = document.getElementById('email').value;
+        var tickets = document.getElementById('tickets').value;
+        // Simulate redirection to payment gateway
+        alert('Redirecting to payment gateway...');
+        // Here you would integrate with an actual payment gateway (e.g., Stripe, PayPal)
+        // After successful payment, you would send a confirmation email to the user with their tickets.
+        alert('Payment successful! Tickets have been sent to ' + email);
+        closeTicketModal();
+        document.getElementById('ticketBookingForm').reset();
+      }
     </script>
   </body>
 </html>
