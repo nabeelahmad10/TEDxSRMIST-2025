@@ -655,7 +655,179 @@
         position: relative;
         display: inline-block;
       }
+      
+      /* Enhanced Responsive Styles for Registration Form */
+      @media (max-width: 1024px) {
+        .registration-container {
+          max-width: 90%;
+        }
+        
+        .registration-form {
+          grid-template-columns: 1fr;
+        }
+        
+        .form-group.full-width {
+          grid-column: span 1;
+        }
+      }
 
+      @media (max-width: 768px) {
+        .registration-header {
+          height: 150px;
+        }
+        
+        .registration-header h2 {
+          font-size: 1.8rem;
+          bottom: 15px;
+          left: 20px;
+        }
+        
+        .registration-content {
+          padding: 1.5rem;
+        }
+        
+        .registration-description {
+          font-size: 0.95rem;
+          margin-bottom: 1.5rem;
+        }
+        
+        .mobile-verification {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+        
+        .mobile-verification .verify-btn {
+          width: 100%;
+        }
+        
+        .terms-container {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+        
+        .terms-container input {
+          margin-top: 0.2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .registration-container {
+          margin: 0 1rem;
+          max-width: calc(100% - 2rem);
+        }
+        
+        .registration-header {
+          height: 120px;
+        }
+        
+        .registration-header h2 {
+          font-size: 1.5rem;
+          bottom: 10px;
+          left: 15px;
+        }
+        
+        .registration-content {
+          padding: 1rem;
+        }
+        
+        .form-group {
+          margin-bottom: 0.75rem;
+        }
+        
+        .form-group label {
+          font-size: 0.9rem;
+          margin-bottom: 0.3rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+          padding: 0.6rem 0.8rem;
+          font-size: 0.9rem;
+        }
+        
+        .payment-btn {
+          padding: 0.8rem;
+          font-size: 1rem;
+        }
+        
+        .close-registration {
+          top: 10px;
+          right: 10px;
+          width: 35px;
+          height: 35px;
+          font-size: 1.2rem;
+        }
+        
+        .terms-container label {
+          font-size: 0.8rem;
+        }
+      }
+
+      /* Fix for very small screens */
+      @media (max-width: 350px) {
+        .registration-header h2 {
+          font-size: 1.3rem;
+        }
+        
+        .registration-description {
+          font-size: 0.85rem;
+        }
+        
+        .form-group label {
+          font-size: 0.85rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+          padding: 0.5rem 0.7rem;
+          font-size: 0.85rem;
+        }
+        
+        .payment-btn {
+          padding: 0.7rem;
+          font-size: 0.95rem;
+        }
+      }
+
+      /* Improve form accessibility and touch targets on mobile */
+      @media (max-width: 768px) {
+        .form-group input,
+        .form-group select,
+        .form-group textarea,
+        .verify-btn,
+        .payment-btn {
+          min-height: 44px; /* Minimum touch target size */
+        }
+        
+        /* Improve checkbox usability on mobile */
+        .terms-container {
+          padding: 0.5rem;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 5px;
+        }
+        
+        .terms-container input[type="checkbox"] {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      /* Fix for iOS devices */
+      @supports (-webkit-touch-callout: none) {
+        .registration-modal {
+          position: fixed;
+          -webkit-overflow-scrolling: touch;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+          font-size: 16px; /* Prevent zoom on iOS */
+        }
+      }
+      
       .domain__title::after {
         content: "";
         position: absolute;
@@ -676,6 +848,7 @@
         margin-bottom: 2rem;
       }
 
+      /* REDESIGNED Team Cards with Black & White to Color Effect */
       .team__card {
         flex: 0 0 calc(33.333% - 2rem);
         max-width: 280px;
@@ -699,20 +872,16 @@
         height: 100%;
         background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.8) 100%);
         z-index: 2;
-        opacity: 0.7;
         transition: opacity 0.4s ease;
       }
 
       .team__card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(137, 1, 1, 0.3);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         border-color: var(--secondary-color);
       }
 
-      .team__card:hover::before {
-        opacity: 0.4;
-      }
-
+      /* Black & White to Color Effect */
       .team__card img {
         width: 100%;
         height: 280px;
@@ -724,6 +893,14 @@
       .team__card:hover img {
         transform: scale(1.05);
         filter: grayscale(0%);
+      }
+
+      /* Improved Overlay Effect */
+      .team__card:hover::before {
+        background: linear-gradient(to bottom, 
+                    transparent 50%, 
+                    rgba(30, 30, 30, 0.8) 90%, 
+                    rgba(40, 40, 40, 0.9) 100%);
       }
 
       .team__info {
@@ -740,7 +917,10 @@
 
       .team__card:hover .team__info {
         transform: translateY(-5px);
-        background: linear-gradient(to top, rgba(100, 2, 2, 0.8), transparent);
+        background: linear-gradient(to top, 
+                    rgba(30, 30, 30, 0.9), 
+                    rgba(40, 40, 40, 0.7) 60%, 
+                    transparent);
       }
 
       .team__card h4 {
@@ -753,7 +933,7 @@
 
       .team__card p {
         color: var(--white);
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: 600;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
         transition: all 0.3s ease;
@@ -764,10 +944,6 @@
         margin-top: 0.3rem;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-      }
-
-      .team__card:hover p {
-        background-color: var(--secondary-color);
       }
 
       .team__social {
@@ -794,11 +970,11 @@
         background-color: var(--secondary-color);
         color: var(--white);
         border-radius: 50%;
+        transition: all 0.3s ease;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 0.9rem;
-        transition: all 0.3s ease;
       }
 
       .team__social a:hover {
@@ -806,82 +982,142 @@
         background-color: var(--secondary-color-dark);
       }
 
+      /* Redesigned Organizer Section */
       .organizer {
-        background-color: var(--primary-color-light);
-        padding: 4rem 0;
+        background: linear-gradient(135deg, #0c0c0d 0%, #1a0101 100%);
+        padding: 6rem 0;
         margin-top: 5rem;
-        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
-        border-top: 5px solid var(--secondary-color);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .organizer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
       }
 
       .organizer__container {
         display: flex;
-        align-items: center;
+        align-items: stretch;
         gap: 4rem;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 2rem;
       }
 
       .organizer__image {
-        flex: 0 0 300px;
+        flex: 0 0 350px;
+        position: relative;
+      }
+
+      .organizer__image::before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        width: 100%;
+        height: 100%;
+        border: 2px solid var(--secondary-color);
+        border-radius: 10px;
+        z-index: 0;
+        transition: all 0.3s ease;
+      }
+
+      .organizer__image:hover::before {
+        top: -10px;
+        left: -10px;
       }
 
       .organizer__image img {
         width: 100%;
-        height: 300px;
+        height: 400px;
         object-fit: cover;
         border-radius: 10px;
-        border: 4px solid var(--secondary-color);
-        box-shadow: 0 10px 30px rgba(137, 1, 1, 0.3);
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         transition: transform 0.5s ease;
       }
 
       .organizer__image:hover img {
-        transform: scale(1.05);
+        transform: scale(1.02);
       }
 
       .organizer__content {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .organizer__title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .organizer__title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 80px;
+        height: 3px;
+        background-color: var(--secondary-color);
       }
 
       .organizer__quote {
-        font-size: 1.5rem;
-        line-height: 2.2rem;
-        color: var(--white);
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: var(--text_light);
         margin-bottom: 2rem;
-        font-style: italic;
         position: relative;
-        padding: 0 2rem;
-      }
-
-      .organizer__quote::before,
-      .organizer__quote::after {
-        content: '"';
-        font-size: 4rem;
-        color: var(--secondary-color);
-        opacity: 0.3;
-        position: absolute;
-      }
-
-      .organizer__quote::before {
-        top: -20px;
-        left: 0;
-      }
-
-      .organizer__quote::after {
-        bottom: -40px;
-        right: 0;
+        padding-left: 1.5rem;
+        border-left: 3px solid var(--secondary-color);
+        font-style: italic;
       }
 
       .organizer__name {
         font-size: 1.5rem;
         font-weight: 700;
         color: var(--secondary-color);
-        margin-top: 1rem;
+        margin-bottom: 0.5rem;
       }
 
-      .organizer__title {
+      .organizer__position {
         color: var(--text_light);
-        margin-top: 0.5rem;
         font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+
+      .organizer__social {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .organizer__social a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .organizer__social a:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-5px);
       }
 
       .footer__container {
@@ -1037,67 +1273,344 @@
         display: block;
       }
 
-      @media (max-width: 768px) {
-        .desktop-register {
-          display: none !important;
+      /* Improved Registration Form Modal with Better Scrolling */
+      .registration-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        z-index: 2000;
+        overflow-y: auto;
+        padding: 2rem 0;
+        overscroll-behavior: contain;
+      }
+
+      .registration-container {
+        max-width: 900px;
+        margin: 2rem auto;
+        background: linear-gradient(135deg, #0c0c0d 0%, #1a0101 100%);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .registration-header {
+        position: relative;
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .registration-header img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .registration-header::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to top, #0c0c0d, transparent);
+      }
+
+      .registration-header h2 {
+        position: absolute;
+        bottom: 20px;
+        left: 30px;
+        color: var(--white);
+        font-size: 2.5rem;
+        font-weight: 700;
+        z-index: 10;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      }
+
+      .registration-content {
+        padding: 2rem;
+        max-height: 70vh;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--secondary-color) rgba(0, 0, 0, 0.2);
+      }
+
+      .registration-content::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .registration-content::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+      }
+
+      .registration-content::-webkit-scrollbar-thumb {
+        background-color: var(--secondary-color);
+        border-radius: 10px;
+      }
+
+      .registration-description {
+        color: var(--text_light);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        font-size: 1.1rem;
+      }
+
+      .registration-form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .form-group {
+        margin-bottom: 1rem;
+      }
+
+      .form-group.full-width {
+        grid-column: span 2;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--white);
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        color: var(--white);
+        font-family: "Poppins", sans-serif;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--secondary-color);
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .mobile-verification {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .mobile-verification input {
+        flex: 1;
+      }
+
+      .verify-btn {
+        padding: 0.75rem 1.5rem;
+        background-color: var(--secondary-color);
+        color: var(--white);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .verify-btn:hover {
+        background-color: var(--secondary-color-dark);
+      }
+
+      .terms-container {
+        margin: 2rem 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .terms-container input {
+        margin-top: 0.3rem;
+      }
+
+      .terms-container label {
+        color: var(--text_light);
+        font-size: 0.9rem;
+      }
+
+      .terms-container a {
+        color: var(--secondary-color);
+        text-decoration: underline;
+      }
+
+      .payment-btn {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        background-color: var(--secondary-color);
+        color: var(--white);
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+        text-align: center;
+      }
+
+      .payment-btn:hover {
+        background-color: var(--secondary-color-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(137, 1, 1, 0.3);
+      }
+
+      .close-registration {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(0, 0, 0, 0.5);
+        color: var(--white);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 20;
+        transition: all 0.3s ease;
+      }
+
+      .close-registration:hover {
+        background-color: var(--secondary-color);
+        transform: rotate(90deg);
+      }
+
+      /* Success Message Styles */
+      .success-message {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #0c0c0d 0%, #1a0101 100%);
+        border: 2px solid var(--secondary-color);
+        border-radius: 10px;
+        padding: 2rem;
+        text-align: center;
+        z-index: 3000;
+        max-width: 500px;
+        width: 90%;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      .success-message h3 {
+        color: var(--white);
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .success-message p {
+        color: var(--text_light);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+      }
+
+      .success-message .icon {
+        font-size: 4rem;
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+        display: inline-block;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
         }
-        .mobile-register {
-          display: block !important;
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
         }
       }
 
-      @media (min-width: 769px) {
-        .mobile-register {
-          display: none !important;
-        }
-        .desktop-register {
-          display: block !important;
-        }
+      .success-message .btn {
+        margin-top: 1rem;
       }
 
+      /* Responsive Styles */
       @media (max-width: 1024px) {
         .header__container {
           grid-template-columns: 1fr;
         }
-
         .header__image {
           grid-row: 1;
         }
-
         .class__container {
           grid-template-columns: 1fr;
         }
-
         .class__image {
           min-height: 500px;
         }
-
         .footer__container {
           grid-template-columns: repeat(2, 1fr);
         }
-
         .section__container {
           padding: 4rem 1rem;
         }
-
         .team__hierarchy {
           gap: 3rem;
         }
-
         .team__card {
           flex: 0 0 calc(50% - 2rem);
+        }
+        .organizer__container {
+          flex-direction: column;
+        }
+        .organizer__image {
+          flex: 0 0 auto;
+          max-width: 400px;
+          margin: 0 auto;
+        }
+        .registration-form {
+          grid-template-columns: 1fr;
+        }
+        .form-group.full-width {
+          grid-column: span 1;
         }
       }
 
       @media (max-width: 768px) {
+        .desktop-register {
+          display: none !important;
+        }
+        .mobile-register {
+          display: block !important;
+        }
         .nav__links {
           display: none;
         }
-
         .hamburger {
           display: block;
         }
-
         .nav__links.active {
           position: fixed;
           top: 0;
@@ -1111,72 +1624,63 @@
           align-items: center;
           z-index: 999;
         }
-
         .header__content h1 {
           font-size: 3rem;
           line-height: 3.5rem;
         }
-
         .join__grid {
           position: static;
           width: 100%;
           margin: 2rem 0 0;
         }
-
         .team__hierarchy {
           gap: 2rem;
         }
-
         .vice__presidents {
           flex-direction: column;
           gap: 2rem;
         }
-
         .vice__presidents::before {
           display: none;
         }
-
         .president__level::after {
           height: 30px;
           bottom: -30px;
         }
-
         .domain__tabs {
           flex-direction: column;
           align-items: center;
           gap: 0.75rem;
         }
-
         .domain__tab {
           width: 100%;
           max-width: 250px;
           text-align: center;
         }
-
         .team__card {
           flex: 0 0 100%;
           max-width: 300px;
         }
-
-        .organizer__container {
-          flex-direction: column;
-          text-align: center;
+        .organizer__title {
+          font-size: 2rem;
         }
-
-        .organizer__image {
-          flex: 0 0 auto;
+        .organizer__quote {
+          font-size: 1rem;
         }
-
-        .organizer__quote::before {
-          left: 0;
+        .registration-header {
+          height: 150px;
         }
-
-        .organizer__quote::after {
-          right: 0;
+        .registration-header h2 {
+          font-size: 1.8rem;
         }
+      }
 
-        .section__container {
-          padding: 3rem 1rem;
+      @media (min-width: 769px) {
+        .mobile-register {
+          display: none !important;
+        }
+        .desktop-register {
+          display: block !important;
         }
       }
 
@@ -1185,94 +1689,39 @@
           font-size: 2.5rem;
           line-height: 3rem;
         }
-
         .footer__container {
           grid-template-columns: 1fr;
         }
-
         .section__container {
           padding: 2.5rem 1rem;
         }
-
         .section__header {
           font-size: 1.8rem;
         }
-
         .domain__title {
           font-size: 1.5rem;
         }
-
         .organizer__quote {
-          font-size: 1.2rem;
-          line-height: 1.8rem;
-          padding: 0 1rem;
+          font-size: 1rem;
+          line-height: 1.6;
+          padding-left: 1rem;
         }
-      }
-
-      /* Ticket Booking Modal Styles */
-      .ticket-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        z-index: 2000;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .ticket-form {
-        background: var(--primary-color-light);
-        padding: 2rem;
-        border-radius: 8px;
-        width: 90%;
-        max-width: 500px;
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-        position: relative;
-      }
-
-      .ticket-form h2 {
-        text-align: center;
-        margin-bottom: 1.5rem;
-        color: var(--white);
-      }
-
-      .ticket-form input,
-      .ticket-form button {
-        width: 100%;
-        padding: 0.75rem;
-        margin-bottom: 1rem;
-        border: none;
-        border-radius: 4px;
-      }
-
-      .ticket-form input {
-        background: var(--primary-color);
-        color: var(--white);
-      }
-
-      .ticket-form button {
-        background-color: var(--secondary-color);
-        color: var(--white);
-        cursor: pointer;
-        transition: 0.3s;
-      }
-
-      .ticket-form button:hover {
-        background-color: var(--secondary-color-dark);
-      }
-
-      .ticket-form .close-modal {
-        background: transparent;
-        border: none;
-        font-size: 1.5rem;
-        color: var(--white);
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        cursor: pointer;
+        .organizer__title {
+          font-size: 1.8rem;
+        }
+        .registration-container {
+          margin: 0 1rem;
+        }
+        .registration-content {
+          padding: 1.5rem;
+        }
+        .mobile-verification {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+        .mobile-verification .verify-btn {
+          width: 100%;
+        }
       }
     </style>
   </head>
@@ -1288,11 +1737,11 @@
         <li class="link"><a href="#about">About</a></li>
         <li class="link"><a href="#team">Our Team</a></li>
         <li class="link mobile-register">
-          <button class="btn" onclick="showTicketModal()">Register Now</button>
+          <button class="btn" onclick="showRegistrationModal()">Register Now</button>
         </li>
         <button class="close-menu">✖</button>
       </ul>
-      <button class="btn desktop-register" onclick="showTicketModal()">Register Now</button>
+      <button class="btn desktop-register" onclick="showRegistrationModal()">Register Now</button>
       <button class="hamburger">
         <span></span>
         <span></span>
@@ -1348,7 +1797,7 @@
           </div>
         </div>
         <!-- Centered Register Now button -->
-        <button class="btn" onclick="showTicketModal()">Register Now</button>
+        <button class="btn" onclick="showRegistrationModal()">Register Now</button>
       </div>
     </section>
 
@@ -1365,7 +1814,7 @@
               <h4>Dr. Sudheer Kumar N</h4>
             </div>
             <div class="card-back">
-              <p>Sudheer Kumar N, CBPO at ISRO, India’s space research organization. With a wealth of experience in the aerospace industry, he takes us on a journey through the stars, sharing insights into the future of space exploration and the role of innovation in shaping our cosmic aspirations.</p>
+              <p>Sudheer Kumar N, CBPO at ISRO, India's space research organization. With a wealth of experience in the aerospace industry, he takes us on a journey through the stars, sharing insights into the future of space exploration and the role of innovation in shaping our cosmic aspirations.</p>
             </div>
           </div>
         </div>
@@ -1398,7 +1847,7 @@
               <h4>Disha Kasat</h4>
             </div>
             <div class="card-back">
-              <p>Disha Kasat, a cricketer and WPL winner with RCB. With her experience in female cricket and an impressive track record, she shares insights into the future of women’s sports and innovation in society.</p>
+              <p>Disha Kasat, a cricketer and WPL winner with RCB. With her experience in female cricket and an impressive track record, she shares insights into the future of women's sports and innovation in society.</p>
             </div>
           </div>
         </div>
@@ -1454,7 +1903,7 @@
               <h4>Dr. Sudheer Kumar N</h4>
             </div>
             <div class="card-back">
-              <p>Sudheer Kumar N, CBPO at ISRO, India’s space research organization. With a wealth of experience in the aerospace industry, he takes us on a journey through the stars, sharing insights into the future of space exploration and the role of innovation in shaping our cosmic aspirations.</p>
+              <p>Sudheer Kumar N, CBPO at ISRO, India's space research organization. With a wealth of experience in the aerospace industry, he takes us on a journey through the stars, sharing insights into the future of space exploration and the role of innovation in shaping our cosmic aspirations.</p>
             </div>
           </div>
         </div>
@@ -1487,7 +1936,7 @@
               <h4>Disha Kasat</h4>
             </div>
             <div class="card-back">
-              <p>Disha Kasat, a cricketer and WPL winner with RCB. With her experience in female cricket and an impressive track record, she shares insights into the future of women’s sports and innovation in society.</p>
+              <p>Disha Kasat, a cricketer and WPL winner with RCB. With her experience in female cricket and an impressive track record, she shares insights into the future of women's sports and innovation in society.</p>
             </div>
           </div>
         </div>
@@ -1592,7 +2041,7 @@
         </div>
         <div class="vice__presidents">
           <div class="team__card">
-            <img src="atul.png" alt="Vice President">
+            <img src="atulll.jpg" alt="Vice President">
             <div class="team__info">
               <h4>Atul Nair</h4>
               <p>Vice President</p>
@@ -1603,7 +2052,7 @@
             </div>
           </div>
           <div class="team__card">
-            <img src="atul.png" alt="Vice President">
+            <img src="smaran.jpg" alt="Vice President">
             <div class="team__info">
               <h4>Smaran V</h4>
               <p>Vice President</p>
@@ -1639,7 +2088,7 @@
               </div>
             </div>
             <div class="team__card">
-              <img src="swayamm.png" alt="Lead">
+              <img src="SWAYAMMM.jpg" alt="Lead">
               <div class="team__info">
                 <h4>Swayam Pandey</h4>
                 <p>Lead</p>
@@ -1695,21 +2144,122 @@
             </div>
           </div>
         </div>
-        <!-- Additional domain sections commented out for brevity -->
+        
+        <div class="domain__section" id="operations">
+          <h3 class="domain__title">OPERATIONS</h3>
+          <div class="domain__team">
+            <div class="team__card">
+              <img src="operations-lead1.jpg" alt="Lead">
+              <div class="team__info">
+                <h4>Rahul Sharma</h4>
+                <p>Lead</p>
+              </div>
+              <div class="team__social">
+                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+              </div>
+            </div>
+            <div class="team__card">
+              <img src="operations-lead2.jpg" alt="Lead">
+              <div class="team__info">
+                <h4>Priya Patel</h4>
+                <p>Lead</p>
+              </div>
+              <div class="team__social">
+                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+              </div>
+            </div>
+            <div class="team__card">
+              <img src="operations-associate1.jpg" alt="Associate Lead">
+              <div class="team__info">
+                <h4>Arjun Reddy</h4>
+                <p>Associate Lead</p>
+              </div>
+              <div class="team__social">
+                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="domain__section" id="creatives">
+          <h3 class="domain__title">CREATIVES</h3>
+          <div class="domain__team">
+            <div class="team__card">
+              <img src="creatives-lead1.jpg" alt="Lead">
+              <div class="team__info">
+                <h4>Ananya Singh</h4>
+                <p>Lead</p>
+              </div>
+              <div class="team__social">
+                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+              </div>
+            </div>
+            <div class="team__card">
+              <img src="creatives-lead2.jpg" alt="Lead">
+              <div class="team__info">
+                <h4>Rohan Kapoor</h4>
+                <p>Lead</p>
+              </div>
+              <div class="team__social">
+                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="domain__section" id="sponsorships">
+          <h3 class="domain__title">SPONSORSHIPS</h3>
+          <div class="domain__team">
+            <div class="team__card">
+              <img src="sponsorships-lead1.jpg" alt="Lead">
+              <div class="team__info">
+                <h4>Vikram Mehta</h4>
+                <p>Lead</p>
+              </div>
+              <div class="team__social">
+                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+              </div>
+            </div>
+            <div class="team__card">
+              <img src="sponsorships-associate1.jpg" alt="Associate Lead">
+              <div class="team__info">
+                <h4>Nisha Verma</h4>
+                <p>Associate Lead</p>
+              </div>
+              <div class="team__social">
+                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- Redesigned Organizer Section -->
     <section class="organizer">
-      <div class="section__container organizer__container">
+      <div class="organizer__container">
         <div class="organizer__image">
           <img src="HARIHARAN.png" alt="Hariharan B">
         </div>
         <div class="organizer__content">
+          <h2 class="organizer__title">Meet Our Organizer</h2>
           <div class="organizer__quote">
             At TEDxSRMIST, we believe in the power of ideas to change attitudes, lives, and ultimately, the world. Our mission is to create a platform where innovative thoughts meet passionate minds, fostering discussions that transcend boundaries and inspire action.
           </div>
           <div class="organizer__name">Hariharan B</div>
-          <div class="organizer__title">Organizer, TEDxSRMIST</div>
+          <div class="organizer__position">Organizer, TEDxSRMIST</div>
+          <div class="organizer__social">
+            <a href="#"><i class="ri-linkedin-fill"></i></a>
+            <a href="#"><i class="ri-instagram-line"></i></a>
+            <a href="#"><i class="ri-twitter-fill"></i></a>
+          </div>
         </div>
       </div>
     </section>
@@ -1751,19 +2301,83 @@
       Copyright © 2025 TEDxSRMIST. All rights reserved.
     </div>
 
-    <!-- Ticket Booking Modal -->
-    <div id="ticketModal" class="ticket-modal">
-      <div class="ticket-form">
-        <button class="close-modal" onclick="closeTicketModal()">✖</button>
-        <h2>Ticket Booking</h2>
-        <form id="ticketBookingForm" onsubmit="processTicketBooking(event)">
-          <input type="text" id="name" name="name" placeholder="Your Name" required />
-          <input type="tel" id="phone" name="phone" placeholder="Phone Number" required />
-          <input type="email" id="email" name="email" placeholder="Email Address" required />
-          <input type="number" id="tickets" name="tickets" placeholder="Number of Tickets" min="1" required />
-          <button type="submit">Buy Now</button>
-        </form>
+    <!-- Improved Registration Form Modal -->
+    <div id="registrationModal" class="registration-modal">
+      <div class="registration-container">
+        <button class="close-registration" onclick="closeRegistrationModal()">✖</button>
+        <div class="registration-header">
+          <img src="TEDx-cosmos2.jpg" alt="TEDxSRMIST Event Banner">
+          <h2>Register for TEDxSRMIST</h2>
+        </div>
+        <div class="registration-content">
+          <div class="registration-description">
+            Join us for an extraordinary day of inspiration and innovation at TEDxSRMIST. Our theme "Empyrean: A Vision Beyond the Stars" invites you to explore groundbreaking ideas that push the boundaries of what's possible. Secure your spot today for this transformative experience.
+          </div>
+          
+          <form id="registrationForm" onsubmit="processRegistration(event)">
+            <div class="registration-form">
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                <div class="mobile-verification">
+                  <input type="text" id="verificationCode" placeholder="Enter verification code">
+                  <button type="button" class="verify-btn" onclick="sendVerificationCode()">Verify</button>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="organization">Organization/Institution</label>
+                <input type="text" id="organization" name="organization" placeholder="Enter your organization or institution">
+              </div>
+              
+              <div class="form-group">
+                <label for="ticketType">Ticket Type</label>
+                <select id="ticketType" name="ticketType" required>
+                  <option value="">Select ticket type</option>
+                  <option value="standard">Standard (₹999)</option>
+                  <option value="premium">Premium (₹1499)</option>
+                  <option value="vip">VIP (₹2499)</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="quantity">Number of Tickets</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" required>
+              </div>
+              
+              <div class="form-group full-width">
+                <label for="specialRequirements">Special Requirements</label>
+                <textarea id="specialRequirements" name="specialRequirements" placeholder="Any dietary restrictions, accessibility needs, or other requirements?"></textarea>
+              </div>
+            </div>
+            
+            <div class="terms-container">
+              <input type="checkbox" id="termsAgree" name="termsAgree" required>
+              <label for="termsAgree">I agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a> of TEDxSRMIST. I understand that my personal information will be processed as described in the Privacy Policy.</label>
+            </div>
+            
+            <button type="submit" class="payment-btn">Proceed to Payment</button>
+          </form>
+        </div>
       </div>
+    </div>
+
+    <!-- Success Message Modal -->
+    <div id="successMessage" class="success-message">
+      <div class="icon"><i class="ri-check-line"></i></div>
+      <h3>Registration Successful!</h3>
+      <p>Thank you for registering for TEDxSRMIST. Your tickets have been sent to your email address. We look forward to seeing you at the event!</p>
+      <button class="btn" onclick="closeSuccessMessage()">Return to Homepage</button>
     </div>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -1850,7 +2464,7 @@
         teamCards.forEach(card => {
           card.addEventListener("mouseenter", () => {
             card.style.transform = "translateY(-10px)";
-            card.style.boxShadow = "0 15px 30px rgba(137, 1, 1, 0.3)";
+            card.style.boxShadow = "0 15px 30px rgba(0, 0, 0, 0.4)";
             card.style.borderColor = "var(--secondary-color)";
           });
 
@@ -1898,26 +2512,58 @@
         setInterval(updateCountdown, 1000);
       });
 
-      // Ticket Modal functions
-      function showTicketModal() {
-        document.getElementById('ticketModal').style.display = 'flex';
+      // Registration Modal functions
+      function showRegistrationModal() {
+        document.getElementById('registrationModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
       }
-      function closeTicketModal() {
-        document.getElementById('ticketModal').style.display = 'none';
+      
+      function closeRegistrationModal() {
+        document.getElementById('registrationModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
       }
-      function processTicketBooking(event) {
+      
+      function sendVerificationCode() {
+        const phone = document.getElementById('phone').value;
+        if (phone) {
+          // Simulate sending verification code
+          alert('Verification code sent to ' + phone);
+          // In a real implementation, you would call an API to send the verification code
+        } else {
+          alert('Please enter a valid phone number');
+        }
+      }
+      
+      function processRegistration(event) {
         event.preventDefault();
-        var name = document.getElementById('name').value;
-        var phone = document.getElementById('phone').value;
-        var email = document.getElementById('email').value;
-        var tickets = document.getElementById('tickets').value;
-        // Simulate redirection to payment gateway
+        const form = document.getElementById('registrationForm');
+        const formData = new FormData(form);
+        
+        // Validate verification code
+        const verificationCode = document.getElementById('verificationCode').value;
+        if (!verificationCode) {
+          alert('Please verify your phone number');
+          return;
+        }
+        
+        // Simulate form submission and payment processing
         alert('Redirecting to payment gateway...');
-        // Here you would integrate with an actual payment gateway (e.g., Stripe, PayPal)
-        // After successful payment, you would send a confirmation email to the user with their tickets.
-        alert('Payment successful! Tickets have been sent to ' + email);
-        closeTicketModal();
-        document.getElementById('ticketBookingForm').reset();
+        
+        // In a real implementation, you would:
+        // 1. Validate the form data
+        // 2. Submit the data to your server
+        // 3. Redirect to a payment gateway
+        
+        // Simulate successful payment and show success message
+        setTimeout(() => {
+          closeRegistrationModal();
+          document.getElementById('successMessage').style.display = 'block';
+          form.reset();
+        }, 2000);
+      }
+      
+      function closeSuccessMessage() {
+        document.getElementById('successMessage').style.display = 'none';
       }
     </script>
   </body>
