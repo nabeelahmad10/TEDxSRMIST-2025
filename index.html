@@ -2,11 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
       rel="stylesheet"
-    /link>
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <title>TEDxSRMIST</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
@@ -1722,6 +1723,72 @@
         .mobile-verification .verify-btn {
           width: 100%;
         }
+        .organizer__image {
+          max-width: 300px;
+        }
+      }
+      
+      /* Success Message Banner */
+      .success-message-banner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #0c0c0d 0%, #1a0101 100%);
+        border: 2px solid var(--secondary-color);
+        border-radius: 10px;
+        padding: 1.5rem;
+        text-align: center;
+        z-index: 3000;
+        max-width: 400px;
+        width: 90%;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        display: none;
+      }
+      
+      .success-message-banner.show {
+        display: block;
+        animation: fadeInBanner 0.5s ease forwards;
+      }
+      
+      @keyframes fadeInBanner {
+        from {
+          opacity: 0;
+          transform: translate(-50%, -40%);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
+      }
+      
+      .success-message-banner .icon {
+        font-size: 3rem;
+        color: var(--secondary-color);
+        margin-bottom: 0.5rem;
+        display: inline-block;
+      }
+      
+      .success-message-banner h3 {
+        color: var(--white);
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .success-message-banner p {
+        color: var(--text_light);
+        margin-bottom: 1rem;
+      }
+      
+      .success-message-banner .close-banner {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        color: var(--white);
+        font-size: 1.2rem;
+        cursor: pointer;
       }
     </style>
   </head>
@@ -1749,7 +1816,7 @@
       </button>
     </nav>
 
-    <header id="home" class="section__container header__container">
+    <header id="home" class="section__container header__container" data-aos="fade-up">
       <div class="header__content">
         <span class="bg__blur"></span>
         <span class="bg__blur header__blur"></span>
@@ -1766,7 +1833,7 @@
       </div>
     </header>
 
-    <section id="empyrean" class="section__container class__container">
+    <section id="empyrean" class="section__container class__container" data-aos="fade-up">
       <div class="class__image">
         <span class="bg__blur"></span>
         <img src="TEDx-cosmos2.jpg" alt="class" class="class__img-1" />
@@ -1801,7 +1868,7 @@
       </div>
     </section>
 
-    <section id="speakers" class="section__container explore__container">
+    <section id="speakers" class="section__container explore__container" data-aos="fade-up">
       <div class="explore__header">
         <h2 class="section__header">OUR PREVIOUS SPEAKERS</h2>
       </div>
@@ -1951,43 +2018,10 @@
             </div>
           </div>
         </div>
-        <div class="explore__card">
-          <div class="explore__card-inner">
-            <div class="card-front">
-              <img src="prachi.jpg" alt="Speaker 6" />
-              <h4>Prachi Goswami</h4>
-            </div>
-            <div class="card-back">
-              <p>Prachi Goswami, a pilot and aviation instructor, rises from a national-level swimmer to soaring heights in the aviation industry, inspiring transformation and enlightenment.</p>
-            </div>
-          </div>
-        </div>
-        <div class="explore__card">
-          <div class="explore__card-inner">
-            <div class="card-front">
-              <img src="prakruti.jpg" alt="Speaker 6" />
-              <h4>Prakruti Mishra</h4>
-            </div>
-            <div class="card-back">
-              <p>Prakruti Mishra – a beacon of stardom whose captivating performances and dedication embody the transformative power of storytelling.</p>
-            </div>
-          </div>
-        </div>
-        <div class="explore__card">
-          <div class="explore__card-inner">
-            <div class="card-front">
-              <img src="ankush.jpg" alt="Speaker 7" />
-              <h4>Ankush Barjata</h4>
-            </div>
-            <div class="card-back">
-              <p>Ankush R Barjata, CEO of Deeva and a Shark Tank finalist, revolutionizes the saree shopping experience with his visionary approach.</p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <section id="about" class="section__container join__container">
+    <section id="about" class="section__container join__container" data-aos="fade-up">
       <h2 class="section__header">WHY ATTEND <span style="color: red;">TEDx</span>SRMIST?</h2>
       <p class="section__subheader">
         Knowledge is a gift meant to be shared. The more you give, the deeper it resonates within you, shaping new perspectives. Attending TEDxSRMIST is a unique opportunity to immerse yourself in groundbreaking ideas, thought-provoking discussions, and inspiring stories. It's a platform to gain insights from experts, challenge your thinking, and spark meaningful conversations. Whether you're a speaker or an audience member, the experience can ignite a lasting impact, fostering personal growth and a shift in perspective that stays with you long after the event.
@@ -2020,7 +2054,7 @@
       </div>
     </section>
 
-    <section id="team" class="section__container team__container">
+    <section id="team" class="section__container team__container" data-aos="fade-up">
       <div class="team__header">
         <h2>OUR TEAM</h2>
       </div>
@@ -2243,7 +2277,7 @@
     </section>
 
     <!-- Redesigned Organizer Section -->
-    <section class="organizer">
+    <section class="organizer" data-aos="fade-up">
       <div class="organizer__container">
         <div class="organizer__image">
           <img src="HARIHARAN.png" alt="Hariharan B">
@@ -2264,7 +2298,7 @@
       </div>
     </section>
 
-    <footer class="section__container footer__container">
+    <footer class="section__container footer__container" data-aos="fade-up">
       <span class="bg__blur"></span>
       <span class="bg__blur footer__blur"></span>
       <div class="footer__col">
@@ -2298,7 +2332,7 @@
       </div>
     </footer>
     <div class="footer__bar">
-      Copyright © 2025 TEDxSRMIST. All rights reserved.
+      Created with ❤️ by TEDxSRMIST. All rights reserved.
     </div>
 
     <!-- Improved Registration Form Modal -->
@@ -2379,10 +2413,27 @@
       <p>Thank you for registering for TEDxSRMIST. Your tickets have been sent to your email address. We look forward to seeing you at the event!</p>
       <button class="btn" onclick="closeSuccessMessage()">Return to Homepage</button>
     </div>
+    
+    <!-- Payment Success Banner -->
+    <div id="paymentSuccessBanner" class="success-message-banner">
+      <button class="close-banner" onclick="closeBanner()">✖</button>
+      <div class="icon"><i class="ri-check-double-line"></i></div>
+      <h3>Payment Successful!</h3>
+      <p>Your payment has been processed successfully. Thank you for registering for TEDxSRMIST!</p>
+    </div>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // Initialize AOS
+        AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: true,
+          mirror: false
+        });
+        
         const hamburger = document.querySelector(".hamburger");
         const navLinks = document.querySelector(".nav__links");
         const closeMenu = document.querySelector(".close-menu");
@@ -2557,13 +2608,25 @@
         // Simulate successful payment and show success message
         setTimeout(() => {
           closeRegistrationModal();
-          document.getElementById('successMessage').style.display = 'block';
+          showPaymentSuccessBanner();
           form.reset();
         }, 2000);
       }
       
       function closeSuccessMessage() {
         document.getElementById('successMessage').style.display = 'none';
+      }
+      
+      function showPaymentSuccessBanner() {
+        const banner = document.getElementById('paymentSuccessBanner');
+        banner.classList.add('show');
+        setTimeout(() => {
+          banner.classList.remove('show');
+        }, 5000);
+      }
+      
+      function closeBanner() {
+        document.getElementById('paymentSuccessBanner').classList.remove('show');
       }
     </script>
   </body>
